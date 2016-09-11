@@ -21,8 +21,8 @@ services:
     ports:
       - 80:80
     environment:
-      - DOCKER_USER=nginx
-      - DOCKER_GROUP=nginx
+      - DOCKER_USER=docker-nginx
+      - DOCKER_GROUP=docker-nginx
   validate:
     image: aelsabbahy/goss
     depends_on:
