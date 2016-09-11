@@ -1,0 +1,18 @@
+http:
+  http://nginx/:
+    status: 200
+    allow-insecure: false
+    timeout: 5000
+    body:
+      - Welcome to vhost-1.
+  http://nginx/something-random:
+    status: 404
+    allow-insecure: false
+    timeout: 5000
+    body: []
+  http://nginx/location-1/:
+    status: 200
+    allow-insecure: false
+    timeout: 5000
+    body:
+      - Welcome to location-1

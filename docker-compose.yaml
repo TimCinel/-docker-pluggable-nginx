@@ -23,3 +23,10 @@ services:
     environment:
       - DOCKER_USER=nginx
       - DOCKER_GROUP=nginx
+  validate:
+    image: aelsabbahy/goss
+    depends_on:
+      - nginx
+    volumes:
+      - ./example/goss.yaml:/goss.yaml
+    command: goss validate /goss.yaml
