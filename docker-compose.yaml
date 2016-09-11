@@ -13,7 +13,7 @@ services:
       - "./example/pluggable-location-1/index.html:/opt/something/location-1/index.html"
     command: /bin/true
   nginx:
-    image: timcinel/nginx-pluggable:latest
+    image: timcinel/pluggable-nginx:latest
     build: .
     volumes_from:
       - vhost-1
