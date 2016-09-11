@@ -1,0 +1,25 @@
+version: '2'
+services:
+  vhost-1:
+    image: alpine
+    volumes:
+      - "./example/pluggable-vhost-1/nginx-vhost.conf:/etc/nginx/conf.d/vhost-1.conf"
+      - "./example/pluggable-vhost-1/index.html:/var/www/vhost-1/index.html"
+    command: /bin/true
+  location-1:
+    image: alpine
+    volumes:
+      - "./example/pluggable-location-1/nginx-location.conf:/etc/nginx/locations.d/vhost-1-location-1/location.conf"
+      - "./example/pluggable-location-1/index.html:/opt/something/location-1/index.html"
+    command: /bin/true
+  nginx:
+    image: timcinel/nginx-pluggable:latest
+    build: .
+    volumes_from:
+      - vhost-1
+      - location-1
+    ports:
+      - 80:80
+    environment:
+      - DOCKER_USER=nginx
+      - DOCKER_GROUP=nginx
