@@ -15,6 +15,9 @@ services:
   nginx:
     image: timcinel/pluggable-nginx:latest
     build: .
+    depends_on:
+      - vhost-1
+      - location-1
     volumes_from:
       - vhost-1
       - location-1
